@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MvcMovie.Models;
+using MvcMovie2.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MvcMovie2

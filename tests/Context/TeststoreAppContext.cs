@@ -1,9 +1,9 @@
 using System;
 using System.Data.Entity;
-using MvcMovie.Models;
+using MvcMovie2.Models;
 using System.Collections.Generic; 
 
-namespace MvcMovie.tests.Context
+namespace MvcMovie2.tests.Context
 {
     public class TestStoreAppContext : IMvcMovieContext 
     {

@@ -1,7 +1,7 @@
 using Xunit; 
 using MvcMovie2.Controllers; 
 using Microsoft.AspNetCore.Mvc;
-using MvcMovie.Models; 
+using MvcMovie2.Models; 
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Moq; 
@@ -12,7 +12,7 @@ using System.Net;
 using Xunit.Abstractions;
 using System;
 
-namespace MvcMovie.tests.ControllerTests 
+namespace MvcMovie2.tests.ControllerTests 
 {
     public class MoviesControllerTest : MakeConsoleWork
     {

@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using Xunit.Abstractions;
 
-namespace MvcMovie.tests.ControllerTests 
+namespace MvcMovie2.tests.ControllerTests 
 {   
     public class MakeConsoleWork : IDisposable
     {

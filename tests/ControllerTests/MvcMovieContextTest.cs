@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace MvcMovie.tests.ControllerTests
+namespace MvcMovie2.tests.ControllerTests
 {
     public class MvcMovieContextTest : DbContext
     {
@@ -13,6 +13,6 @@ namespace MvcMovie.tests.ControllerTests
         {
         }
 
-        public DbSet<MvcMovie.Models.Movie> Movie { get; set; }
+        public DbSet<MvcMovie2.Models.Movie> Movie { get; set; }
     }
 }

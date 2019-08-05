@@ -1,7 +1,7 @@
 using Xunit; 
 using System; 
-using MvcMovie.Models; 
-namespace MvcMovie.tests.ModelTests 
+using MvcMovie2.Models; 
+namespace MvcMovie2.tests.ModelTests 
 {
     public class MovieTest
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace MvcMovie.Models
+namespace MvcMovie2.Models
 {
     public class MvcMovieContext : DbContext, IMvcMovieContext
     {

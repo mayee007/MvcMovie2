@@ -2,7 +2,7 @@ using System;
 using System.Data.Entity;
 using System.Collections.Generic; 
 
-namespace MvcMovie.Models
+namespace MvcMovie2.Models
 {
     public interface IMvcMovieContext : IDisposable
     {

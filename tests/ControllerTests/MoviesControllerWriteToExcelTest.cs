@@ -1,7 +1,7 @@
 using Xunit; 
 using MvcMovie2.Controllers; 
 using Microsoft.AspNetCore.Mvc;
-using MvcMovie.Models; 
+using MvcMovie2.Models; 
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Moq; 

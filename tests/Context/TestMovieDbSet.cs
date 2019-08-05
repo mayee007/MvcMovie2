@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
-using MvcMovie.Models; 
+using MvcMovie2.Models; 
 
-namespace MvcMovie.tests.Context 
+namespace MvcMovie2.tests.Context 
 {
     class TestProductDbSet : TestDbSet<Movie>
     {

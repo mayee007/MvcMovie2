@@ -4,8 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using Microsoft.EntityFrameworkCore;
-using MvcMovie.Models;
-using MvcMovie;
+using MvcMovie2.Models;
+using MvcMovie2;
 
 namespace MvcMovie2
 {

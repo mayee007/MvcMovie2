@@ -1,8 +1,8 @@
 using Xunit; 
-using MvcMovie.Controllers; 
+using MvcMovie2.Controllers; 
 using Microsoft.AspNetCore.Mvc;
 
-namespace MvcMovie.tests.ControllerTests 
+namespace MvcMovie2.tests.ControllerTests 
 {
     public class HelloworldControllerTest 
     {
