@@ -8,14 +8,17 @@ using Microsoft.Extensions.DependencyInjection;
 using System; 
 using System.IO;
 using Xunit.Abstractions;
+using MvcMovie.tests.Context; 
+using Moq;
+using System.Collections.Generic; 
 
 namespace MvcMovie.tests.ControllerTests 
 {
-    public class MoviesControllerTest3 : MakeConsoleWork
+    public class MoviesControllerTest4 : MakeConsoleWork
     {
         MoviesController controller; 
-        MvcMovieContext movieContext { get; set; }
-        public MoviesControllerTest3(ITestOutputHelper output) : base(output)
+        Mock<MvcMovieContext> movieContext { get; set; }
+        public MoviesControllerTest4(ITestOutputHelper output) : base(output)
         {
             Console.WriteLine("inside MoviesControllerTest3 constructor");   
 
@@ -23,23 +26,30 @@ namespace MvcMovie.tests.ControllerTests
             GetContextWithData(); 
 
             // add context to controller 
-            controller = new MoviesController(movieContext);  
+            controller = new MoviesController(movieContext.Object);  
+            
         }
 
         // Create MovieContext with seed data
         private void GetContextWithData()
         {
-            var options = new DbContextOptionsBuilder<MvcMovieContext>()
+            /* var options = new DbContextOptionsBuilder<MvcMovieContext>()
                             .UseInMemoryDatabase(Guid.NewGuid().ToString())
-                            .Options;
-            movieContext = new MvcMovieContext(options);
+                            .Options; */
+            movieContext = new Mock<MvcMovieContext>();
         
             var movie1 = new Movie { Id = 1, Genre = "Classic", Title = "Redemption" };
             var movie2 = new Movie { Id = 2, Title = "Avatar", Genre = "Cartoon"  };
-            movieContext.Movie.Add(movie1); 
-            movieContext.Movie.Add(movie2); 
-            movieContext.SaveChanges(); 
 
+            List<Movie> movieList = new List<Movie>{}; 
+            movieList.Add(movie1); 
+            movieList.Add(movie2); 
+            Mock<IMvcMovieContext> mockDb = new Mock<IMvcMovieContext>();
+            
+            //movieContext.Setup(m => m.getAllMovies()).Returns(movieList); 
+            //movieContext = mockDb; 
+
+            //this.movieContext = (IMvcMovieContext) mockDb; 
             Console.WriteLine("inside movieExistsTest GetContextWithData"); 
         }
         
@@ -47,6 +57,7 @@ namespace MvcMovie.tests.ControllerTests
         public async void movieExistsTest() 
         {
             Console.WriteLine("inside movieExistsTest"); 
+            //Console.WriteLine(movieContext.); 
             var result = await controller.Details(1);
             var okResult = result as ViewResult;
             Assert.NotNull(result); 

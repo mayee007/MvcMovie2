@@ -9,10 +9,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http;
 using System.Net;
+using Xunit.Abstractions;
+using System;
 
 namespace MvcMovie.tests.ControllerTests 
 {
-    public class MoviesControllerTest 
+    public class MoviesControllerTest : MakeConsoleWork
     {
         MoviesController controller; 
         MvcMovieContext movieContext; 
@@ -21,7 +23,7 @@ namespace MvcMovie.tests.ControllerTests
 
         public IConfiguration Configuration { get; }
 
-        public MoviesControllerTest() 
+        public MoviesControllerTest(ITestOutputHelper output) : base(output) 
         {
             services.AddDbContext<MvcMovieContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("MovieContext")));
@@ -39,6 +41,7 @@ namespace MvcMovie.tests.ControllerTests
         public void aboutNotNullTest() 
         {
             Task<IActionResult> result = controller.Index("some test"); 
+            Console.WriteLine("inside MoviesControllerTest aboutNotNullTest, result = " + result);   
             Assert.NotNull(result); 
         }
 
