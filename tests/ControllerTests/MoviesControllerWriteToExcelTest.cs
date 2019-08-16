@@ -26,14 +26,16 @@ namespace MvcMovie.tests.ControllerTests
     {
         string filePath; 
         Movie movie1;
-        Movie movie2;  
+        Movie movie2;
+        Movie movie3; 
         List<Movie> movieList; 
         
         public MoviesControllerWriteToExcelTest() 
         {
             filePath = "C:\\Users\\mayee\\source\\repos\\MvcMovie2\\generatedFromTest.xls"; 
             movie1 = new Movie { Id = 1, Genre = "Classic", Title = "Redemption", Price = 10.05M, ReleaseDate=new DateTime(2001, 1, 18) };            
-            movie2 = new Movie { Id = 2, Genre = "Classic", Title = "Shark", Price = 15.05M, ReleaseDate=new DateTime(2005, 5, 23) };            
+            movie2 = new Movie { Id = 2, Genre = "Classic", Title = "Shark", Price = 15.05M, ReleaseDate=new DateTime(2005, 5, 23) };
+            movie3 = new Movie { Id = 3, Genre = "Suspense", Title = "Indecent Proposal", Price = 11.05M, ReleaseDate = new DateTime(1999, 5, 21) };
             movieList = new List<Movie>();
         }
 
@@ -62,6 +64,13 @@ namespace MvcMovie.tests.ControllerTests
             row1.CreateCell(1).SetCellValue(movie2.Title);
             row1.CreateCell(2).SetCellValue(movie2.ReleaseDate);           
             row1.CreateCell(3).SetCellValue(movie2.Genre);
+            row1.CreateCell(4).SetCellValue(15.05D);
+
+            row1 = sheet.CreateRow(3);
+            row1.CreateCell(0).SetCellValue(movie3.Id);
+            row1.CreateCell(1).SetCellValue(movie3.Title);
+            row1.CreateCell(2).SetCellValue(movie3.ReleaseDate);
+            row1.CreateCell(3).SetCellValue(movie3.Genre);
             row1.CreateCell(4).SetCellValue(15.05D);
 
             // Declare one MemoryStream variable for write file in stream  
@@ -102,8 +111,8 @@ namespace MvcMovie.tests.ControllerTests
             Assert.Equal("Shark", movie.Title);  
 
             // call addcontroller
-             
-        }
+            
+        } 
         
     }
 }
