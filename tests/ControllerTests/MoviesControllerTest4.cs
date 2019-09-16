@@ -33,9 +33,7 @@ namespace MvcMovie2.tests.ControllerTests
         // Create MovieContext with seed data
         private void GetContextWithData()
         {
-            /* var options = new DbContextOptionsBuilder<MvcMovieContext>()
-                            .UseInMemoryDatabase(Guid.NewGuid().ToString())
-                            .Options; */
+           
             movieContext = new Mock<MvcMovieContext>();
         
             var movie1 = new Movie { Id = 1, Genre = "Classic", Title = "Redemption" };
@@ -75,6 +73,6 @@ namespace MvcMovie2.tests.ControllerTests
             //person.Id.Should().Be(51);
             //var redirectToActionResult = Assert.IsType<RedirectToActionResult>(result1.ToString().GetType().GetType());
             
-        }
+        } 
     }
 }
