@@ -11,7 +11,7 @@ using Xunit.Abstractions;
 
 namespace MvcMovie2.tests.ControllerTests 
 {
-    public class MoviesControllerTest3 : MakeConsoleWork
+    public class MoviesControllerTest3   : MakeConsoleWork
     {
         MoviesController controller; 
         MvcMovieContext movieContext { get; set; }
@@ -64,6 +64,6 @@ namespace MvcMovie2.tests.ControllerTests
             //person.Id.Should().Be(51);
             //var redirectToActionResult = Assert.IsType<RedirectToActionResult>(result1.ToString().GetType().GetType());
             
-        }
-    }
+        } 
+    } 
 }

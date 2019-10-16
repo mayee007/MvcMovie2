@@ -40,7 +40,7 @@ namespace MvcMovie2.tests.ControllerTests
         [Fact]
         public void aboutNotNullTest() 
         {
-            Task<IActionResult> result = controller.Index("some test"); 
+            Task<IActionResult> result = controller.Index(); 
             Console.WriteLine("inside MoviesControllerTest aboutNotNullTest, result = " + result);   
             Assert.NotNull(result); 
         }
@@ -50,6 +50,6 @@ namespace MvcMovie2.tests.ControllerTests
         {
             var result = controller.Details(1) ; 
             Assert.Equal(HttpStatusCode.NotFound.ToString(), result.Status.ToString()); 
-        }
+        } 
     }
 }

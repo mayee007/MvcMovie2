@@ -12,6 +12,7 @@ namespace MvcMovie2.Controllers
     {
         public IActionResult Index()
         {
+            Console.WriteLine("inside HomeController::index()"); 
             return View();
         }
 

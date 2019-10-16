@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +9,7 @@ using MvcMovie2.Models;
 
 namespace MvcMovie2.Controllers
 {
-    public class MoviesController : Controller
+    public class MoviesController : BaseController
     {
         private readonly MvcMovieContext _context;
 
@@ -19,17 +19,9 @@ namespace MvcMovie2.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index()
         {
-            var movies = from m in _context.Movie
-                        select m;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                movies = movies.Where(s => s.Title.Contains(searchString));
-            }
-
-            return View(await movies.ToListAsync());
+            return View(await _context.Movie.ToListAsync());
         }
 
         // GET: Movies/Details/5
@@ -152,7 +144,7 @@ namespace MvcMovie2.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MovieExists(int id)
+        public bool MovieExists(int id)
         {
             return _context.Movie.Any(e => e.Id == id);
         }
