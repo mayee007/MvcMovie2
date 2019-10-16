@@ -34,8 +34,12 @@ namespace MvcMovie2
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //services.AddDbContext<MvcMovieContext>(options =>
+            //    options.UseSqlite(Configuration.GetConnectionString("MovieContext")));
+
             services.AddDbContext<MvcMovieContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("MovieContext")));
+                options.UseSqlServer($"Initial Catalog=MovieDatabase;Data Source=TRISHUL;Integrated Security=SSPI;"));
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

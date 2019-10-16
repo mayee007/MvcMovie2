@@ -14,6 +14,8 @@ namespace MvcMovie2.tests.ControllerTests
         }
 
         [Fact]
+        [Trait("Category", "ControllerTests")]
+        // dotnet test --filter  "Category=ControllerTests"
         public void aboutNotNullTest() 
         {
             var result = controller.Index() as ViewResult; 
@@ -29,6 +31,7 @@ namespace MvcMovie2.tests.ControllerTests
         }
 
         [Theory]
+        [Trait("Category", "ControllerTests")]
         [InlineData("mahesh", 4, "Hello mahesh", 4)]
         [InlineData("mahesh", 0, "Hello mahesh", 0)]
         [InlineData("mahesh", -1, "Hello mahesh", -1)]

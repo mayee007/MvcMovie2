@@ -9,7 +9,7 @@ using MvcMovie2.Models;
 
 namespace MvcMovie2.Controllers
 {
-    public class MoviesController : Controller 
+    public class MoviesController : BaseController
     {
         private readonly MvcMovieContext _context;
 
@@ -144,7 +144,7 @@ namespace MvcMovie2.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MovieExists(int id)
+        public bool MovieExists(int id)
         {
             return _context.Movie.Any(e => e.Id == id);
         }
