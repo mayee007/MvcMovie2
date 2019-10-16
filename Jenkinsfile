@@ -11,7 +11,6 @@ pipeline {
         stage('cleanup') {
             steps {
                 powershell '''Write-Output  "Removing all files"
-                              dir $($env:SUBDIR_WIN) 
                               Remove-Item -Path "$($env:WORKSPACE)\\dir1" -Recurse ''' 
                 bat 'dir "%WORKSPACE%"'
             } 
