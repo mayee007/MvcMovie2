@@ -10,12 +10,31 @@ pipeline {
     stages {
         stage('cleanup') {
             steps {
-		powershell '''Write-Output "Branch name = $($env:BRANCH_NAME)"
+				powershell '''Write-Output "Branch name = $($env:BRANCH_NAME)"
                 	      Write-Output  "Removing all files"
                               Remove-Item -Path "$($env:WORKSPACE)\\dir1" -Recurse ''' 
                 bat 'dir "%WORKSPACE%"'
             } 
-        } // end of cleanup 
+        } // end of cleanup
+		stage('for dev') {
+			when {
+				expression { env.WORKSPACE == 'dev' } 
+			}
+			steps {
+				echo "executing steps for dev"
+				powershell ''' New-Item -ItemType File -Path dev.txt" '''
+			}
+		}
+		
+		stage('for master') {
+			when {
+				expression { env.WORKSPACE == 'master' } 
+			}
+			steps {
+				echo "executing steps for master"
+				powershell ''' New-Item -ItemType File -Path master.txt" '''
+			}
+		}
         stage('Setup') {
             steps {
                 powershell ''' Write-output "Creating dir and files" ''' 
