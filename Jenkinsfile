@@ -18,7 +18,7 @@ pipeline {
         } // end of cleanup
 		stage('for dev') {
 			when {
-				expression { ${BRANCH_NAME} == 'dev' } 
+				branch 'dev' 
 			}
 			steps {
 				echo "executing steps for dev"
@@ -28,7 +28,7 @@ pipeline {
 		
 		stage('for master') {
 			when {
-				expression { ${env.BRANCH_NAME} == 'master' } 
+				branch 'master' 
 			}
 			steps {
 				echo "executing steps for master"
