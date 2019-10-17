@@ -22,7 +22,7 @@ pipeline {
 			}
 			steps {
 				echo "executing steps for dev"
-				powershell ''' New-Item -ItemType File -Path dev.txt" '''
+				powershell ''' New-Item -ItemType File -Path dev.txt '''
 			}
 		}
 		
@@ -32,7 +32,7 @@ pipeline {
 			}
 			steps {
 				echo "executing steps for master"
-				powershell ''' New-Item -ItemType File -Path master.txt" '''
+				powershell ''' New-Item -ItemType File -Path master.txt '''
 			}
 		}
         stage('Setup') {
