@@ -2,7 +2,7 @@ def getEnvFromBranch(branch) {
   if (branch == 'master') {
     return 'production'
   } else if (branch == 'test1') {
-    return 'development'
+    return 'development' 
  } else { 
 	return 'staging'
  }
@@ -27,8 +27,8 @@ pipeline {
                 	      Write-Output  "Removing all files"
                               Remove-Item -Path "$($env:WORKSPACE)\\dir1" -Recurse ''' 
                 bat 'dir "%WORKSPACE%"'
-				echo DEPLOY_ENV = %DEPLOY_ENV%
-				echo SECONDARY_VAR = %SECONDARY_VAR%
+				echo "DEPLOY_ENV = %DEPLOY_ENV%"
+				echo "SECONDARY_VAR = %SECONDARY_VAR%"
             } 
         } // end of cleanup
 		stage('for dev') {
