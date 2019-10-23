@@ -54,7 +54,7 @@ pipeline {
         stage('display') {
             steps {
                 bat 'dir "%SUBDIR_WIN%"'
-                bat 'dir "%WORKSPACE%"'
+                echo "${WORKSPACE}"
             }
         }
 		stage('Deploy') {
