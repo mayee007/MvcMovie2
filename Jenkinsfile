@@ -27,7 +27,8 @@ pipeline {
                 	      Write-Output  "Removing all files"
                               Remove-Item -Path "$($env:WORKSPACE)\\dir1" -Recurse ''' 
                 bat 'dir "%WORKSPACE%"'
-
+				echo DEPLOY_ENV = %DEPLOY_ENV%
+				echo SECONDARY_VAR = %SECONDARY_VAR%
             } 
         } // end of cleanup
 		stage('for dev') {
