@@ -1,7 +1,7 @@
 def getEnvFromBranch(branch) {
   if (branch == 'master') {
     return 'production'
-  } elseif (branch == 'test1' {
+  } else if (branch == 'test1' {
     return 'development'
  } else { 
 	return 'staging'
