@@ -1,3 +1,11 @@
+def getEnvFromBranch(branch) {
+  if (branch == 'master') {
+    return 'production'
+  } else {
+    return 'staging'
+ }
+}
+
 pipeline {
     agent any 
     environment {
@@ -5,6 +13,7 @@ pipeline {
         SUBDIR = "dir1/subdir/subsubdir"
         SUBDIR_WIN = "${env.WORKSPACE}\\dir1\\subdir\\subsubdir"
         DOTNET = "C:\\Program Files\\dotnet\\dotnet.exe"
+		DEPLOY_ENV = getEnvFromBranch(${env.BRANCH_NAME})
     }
     
     stages {
@@ -48,5 +57,11 @@ pipeline {
                 bat 'dir "%WORKSPACE%"'
             }
         }
+		stage('Deploy') {
+			steps { 
+				echo "deploying to ${DEPLOY_ENV}"
+			}
+		}
+		
     }
 }
