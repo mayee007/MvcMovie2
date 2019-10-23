@@ -13,7 +13,7 @@ pipeline {
         SUBDIR = "dir1/subdir/subsubdir"
         SUBDIR_WIN = "${env.WORKSPACE}\\dir1\\subdir\\subsubdir"
         DOTNET = "C:\\Program Files\\dotnet\\dotnet.exe"
-		DEPLOY_ENV = getEnvFromBranch(${env.BRANCH_NAME})
+		DEPLOY_ENV = getEnvFromBranch(env.BRANCH_NAME)
     }
     
     stages {
