@@ -59,7 +59,7 @@ pipeline {
         }
 		stage('Deploy') {
 			steps { 
-				echo "deploying to %DEPLOY_ENV%"
+				echo "deploying to ${DEPLOY_ENV}"
 			}
 		}
 		
