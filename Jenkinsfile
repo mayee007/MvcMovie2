@@ -17,6 +17,7 @@ pipeline {
         SUBDIR_WIN = "${env.WORKSPACE}\\dir1\\subdir\\subsubdir"
         DOTNET = "C:\\Program Files\\dotnet\\dotnet.exe"
 		DEPLOY_ENV = getEnvFromBranch(env.BRANCH_NAME)
+		SECONDARY_VAR = "something-${DEPLOY_ENV}-end"
     }
     
     stages {
@@ -26,6 +27,8 @@ pipeline {
                 	      Write-Output  "Removing all files"
                               Remove-Item -Path "$($env:WORKSPACE)\\dir1" -Recurse ''' 
                 bat 'dir "%WORKSPACE%"'
+				echo DEPLOY_ENV = ${DEPLOY_ENV}
+				echo SECONDARY_VAR = ${SECONDARY_VAR}
             } 
         } // end of cleanup
 		stage('for dev') {
