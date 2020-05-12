@@ -21,51 +21,20 @@ pipeline {
     }
     
     stages {
-        stage('cleanup') {
+        stage('checkout') {
             steps {
-				powershell '''Write-Output "Branch name = $($env:BRANCH_NAME)"
-                	      Write-Output  "Removing all files"
-                              Remove-Item -Path "$($env:WORKSPACE)\\dir1" -Recurse ''' 
-                bat 'dir "%WORKSPACE%"'
-				echo "DEPLOY_ENV = ${DEPLOY_ENV}"
-				echo "SECONDARY_VAR = ${SECONDARY_VAR}"
-            } 
-        } // end of cleanup
-		stage('for dev') {
-			when {
-				branch 'dev' 
-			}
-			steps {
-				echo "executing steps for dev"
-				powershell ''' New-Item -ItemType File -Path dev.txt '''
-			}
-		}
-		
-		stage('for master') {
-			when {
-				branch 'master' 
-			}
-			steps {
-				echo "executing steps for master"
-				powershell ''' New-Item -ItemType File -Path master.txt '''
-			}
-		}
-        stage('Setup') {
+					git 'https://github.com/mayee007/MvcMovie2.git'
+				}
+        } 
+		 
+        stage('Build') {
             steps {
-                powershell ''' Write-output "Creating dir and files" ''' 
-                powershell ''' New-Item -ItemType Directory -Force -Path $($env:SUBDIR_WIN) 
-                               New-Item -ItemType File -Path "$($env:SUBDIR_WIN)\\ps.txt" '''
-            } 
-        } // end of setup 
-        stage('display') {
-            steps {
-                bat 'dir "%SUBDIR_WIN%"'
-                echo "${WORKSPACE}"
+                bat 'dotnet build'
             }
         }
-		stage('Deploy') {
+		stage('Postman Testing') {
 			steps { 
-				echo "deploying to ${DEPLOY_ENV}"
+				bat "cd tests && newman run MVCMovie.postman_collection.json -e LocalHost.postman_environment.json -d postman_data.json -k"
 			}
 		}
 		
