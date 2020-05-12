@@ -1,0 +1,12 @@
+[
+  {
+    "movies_count": 3,
+    "first_record_id": "1",
+    "first_record_title": "Shawshank Redemption",
+    "first_record_genre": "Classic",
+    "second_record_title": "Shark",
+    "second_record_genre": "Thriller",
+    "url": "https://localhost:44306/api"
+
+  }
+]

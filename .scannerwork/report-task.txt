@@ -1,0 +1,6 @@
+projectKey=mvcmovie
+serverUrl=http://localhost:9000
+serverVersion=8.2.0.32929
+dashboardUrl=http://localhost:9000/dashboard?id=mvcmovie
+ceTaskId=AXFRXY84Zkk38W1kD2ph
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXFRXY84Zkk38W1kD2ph

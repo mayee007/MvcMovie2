@@ -1,6 +1,7 @@
 using System;
-using System.Data.Entity;
-using System.Collections.Generic; 
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MvcMovie2.Models
 {
@@ -11,6 +12,11 @@ namespace MvcMovie2.Models
 
         Movie Details(int id); 
 
-        List<Movie> getAllMovies(); 
+        List<Movie> getAllMovies();
+
+        DbSet<Movie> Movies { get; }
+        DbSet<Movie> Movie { get; }
+
+        //void Add(Movie movie);
     }
 }

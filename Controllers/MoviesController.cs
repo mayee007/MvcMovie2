@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,14 +10,21 @@ using MvcMovie2.Models;
 
 namespace MvcMovie2.Controllers
 {
-    public class MoviesController : BaseController
+    //[Authorize]
+    public class MoviesController : APIController
     {
-        private readonly MvcMovieContext _context;
+        private IMvcMovieContext _context;
 
         public MoviesController(MvcMovieContext context)
         {
+            //_context = new MvcMovieContext(); 
             _context = context;
         }
+
+        /*public MoviesController()
+        {
+            _context = new MvcMovieContext();
+        } */ 
 
         // GET: Movies
         public async Task<IActionResult> Index()
@@ -57,8 +65,9 @@ namespace MvcMovie2.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(movie);
-                await _context.SaveChangesAsync();
+                //_context. Add(movie);
+                _context.MarkAsModified(movie);
+                //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(movie);
@@ -96,8 +105,9 @@ namespace MvcMovie2.Controllers
             {
                 try
                 {
-                    _context.Update(movie);
-                    await _context.SaveChangesAsync();
+                    //_context.Update(movie);
+                    _context.MarkAsModified(movie);
+                    //await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -140,7 +150,7 @@ namespace MvcMovie2.Controllers
         {
             var movie = await _context.Movie.FindAsync(id);
             _context.Movie.Remove(movie);
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

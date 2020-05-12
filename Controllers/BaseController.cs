@@ -9,12 +9,12 @@ using MvcMovie2.Models;
 namespace MvcMovie2.Controllers
 {
     
-    public class BaseController : Controller
+    public class APIController : Controller
     {
         //protected MvcMovieContext dbContext;
         protected string appName = "Movie";
 
-        public BaseController() { }
+        public APIController() { }
 
         //public BaseController(MvcMovieContext context)
         //{

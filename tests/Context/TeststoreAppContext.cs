@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace MvcMovie2.tests.Context
 {
-    public class TestStoreAppContext : IMvcMovieContext 
+    public class TestStoreAppContext //: IMvcMovieContext 
     {
         public TestStoreAppContext()
         {

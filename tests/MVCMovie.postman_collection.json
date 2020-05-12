@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "354e2e72-0101-4888-bfb4-886d18af8c20",
+		"name": "MVCMovie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Movies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52df555a-c26b-4c70-9256-2ae87981cb1d",
+						"exec": [
+							"pm.test(\"Movies Count Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    responseJson = JSON.parse(responseBody);",
+							"",
+							"//Finding the length of the Response Array",
+							"    var list = responseJson.length;",
+							"    console.log(list);",
+							"    tests[\"Validate service retuns 3 records\"] = responseJson.length === data.movies_count ;",
+							"});",
+							"",
+							"pm.test(\"Movies Value Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    responseJson = JSON.parse(responseBody);",
+							"    var first_record = data.first_record_id; ",
+							"    console.log(first_record); ",
+							"//Finding the length of the Response Array",
+							"    tests[\"Movies values test, record \"] = jsonData[0].title === data.first_record_title;",
+							"    tests[\"Movies values test, record 1\"] = jsonData[0].genre === data.first_record_genre;",
+							"});",
+							"",
+							"pm.test(\"Movies Value Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    responseJson = JSON.parse(responseBody);",
+							"",
+							"//Finding the length of the Response Array",
+							"    tests[\"Movies values test, record 2\"] = jsonData[1].title === data.second_record_title;",
+							"    tests[\"Movies values test, record 2\"] = jsonData[1].genre === data.second_record_genre;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_API}}/APIMovies",
+					"host": [
+						"{{URL_API}}"
+					],
+					"path": [
+						"APIMovies"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

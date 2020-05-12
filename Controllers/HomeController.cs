@@ -5,9 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MvcMovie2.Models;
-
+using Microsoft.AspNetCore.Authorization;
 namespace MvcMovie2.Controllers
 {
+    // [Authorize]
     public class HomeController : Controller
     {
         public IActionResult Index()
